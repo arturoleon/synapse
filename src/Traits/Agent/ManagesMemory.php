@@ -62,10 +62,19 @@ trait ManagesMemory
     protected function addUserInputToMemoryPipeline(PendingAgentTask $pendingAgentTask): PendingAgentTask
     {
         $input = $pendingAgentTask->getInput('input');
-        $this->memory->create(Message::make([
-            'role' => 'user',
-            'content' => $input,
-        ]));
+        
+        if($pendingAgentTask->getInput('image')){
+            $this->memory->create(Message::make([
+                'role' => 'image_url',
+                'image' => $pendingAgentTask->getInput('image'),
+                'content' => $input,
+            ]));
+        }else{
+            $this->memory->create(Message::make([
+                'role' => 'user',
+                'content' => $input,
+            ]));
+        }
 
         return $pendingAgentTask;
     }

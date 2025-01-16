@@ -195,6 +195,7 @@ class Agent
                 $image = json_decode(base64_decode($image), true);
                 // attach the image data to the message.
                 $messageData['image'] = $image;
+                $messageData['role'] = Role::IMAGE_URL;
             }
             $prompts[] = Message::make($messageData);
         }

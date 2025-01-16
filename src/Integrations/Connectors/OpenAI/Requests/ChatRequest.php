@@ -117,12 +117,8 @@ class ChatRequest extends Request implements HasBody
             'role' => 'user',
             'content' => [
                 [
-                    'type' => 'text',
-                    'text' => $message['content'],
-                ],
-                [
                     'type' => 'image_url',
-                    'image_url' => [...$message['image']],
+                    'image_url' => ['url' => $message['content']],
                 ],
             ],
         ];
