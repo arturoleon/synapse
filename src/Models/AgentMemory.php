@@ -15,6 +15,7 @@ class AgentMemory extends Model
 
     protected $fillable = [
         'type',
+	'id'
     ];
 
     public function messages(): HasMany
